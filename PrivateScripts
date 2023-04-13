@@ -1,0 +1,38 @@
+local hatName = "International-Fedora-USA"
+
+local hat = game.Players.LocalPlayer.Character:FindFirstChild(hatName)
+
+if hat and hat:IsA("Accessory") and hat:IsA("Hat") then
+
+local player = game.Players:FindFirstChild("Plr")
+if not player then
+    print("Player not found.")
+    return
+end
+
+local humanoid = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+if not humanoid then
+    print("Player character not found.")
+    return
+end
+
+local chat = require(game:GetService("ServerScriptService"):WaitForChild("ChatServiceRunner"):WaitForChild("ChatService"))
+
+chat:Chat(humanoid, "This script is a private script")
+
+wait(1)
+
+chat:ClearPlayerChat(humanoid)
+
+else
+  local Players = game:GetService("Players")
+
+function kickPlayer(player, reason)
+    player:Kick(reason)
+end
+
+local playerToKick = Players:FindFirstChild("Plr")
+
+if playerToKick then
+    kickPlayer(playerToKick, "You have been kicked from the game. Please wear the fedora")
+end
